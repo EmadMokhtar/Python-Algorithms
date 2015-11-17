@@ -82,7 +82,7 @@ class BinaryTree():
         Delete node from the tree
         """
         if self.root:
-            self.root = self.deleteFromParent()
+            self.root = self.deleteFromParent(self.root, data)
 
     def deleteFromParent(self, parent, data):
         """
@@ -92,7 +92,7 @@ class BinaryTree():
             return None
 
         if data == parent.data:
-            return parent.delete()
+            return parent.delete(data)
         elif data < parent.data:
             parent.left = self.deleteFromParent(parent.left, data)
         else:
