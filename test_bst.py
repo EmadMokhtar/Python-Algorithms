@@ -104,5 +104,45 @@ class TestBSTFindMethod(unittest.TestCase):
         self.assertEqual(node3.data, 3)
         self.assertEqual(node4.data, 6)
 
+
+class TestBSTDeleteMethod(unittest.TestCase):
+
+    def setUp(self):
+        self.bt = bst.BinaryTree(5)
+
+    def test_delete_root_node(self):
+        self.bt.delete(5)
+
+        self.assertIsNone(self.bt.root)
+
+    def test_delete_node_with_no_child(self):
+        self.bt.append(10)
+        self.bt.delete(10)
+
+        self.assertRaises(IndexError, lambda: self.bt.find(10))
+
+    def test_delete_node_with_right_child(self):
+        self.bt.append(10)
+        self.bt.append(12)
+        self.bt.delete(12)
+
+        self.assertRaises(IndexError, lambda: self.bt.find(12))
+
+    def test_delete_node_with_left_child(self):
+        self.bt.append(10)
+        self.bt.append(12)
+        self.bt.append(11)
+        self.bt.delete(11)
+
+        self.assertRaises(IndexError, lambda: self.bt.find(11))
+
+    def test_delete_node_with_left_and_right_child(self):
+        self.bt.append(10)
+        self.bt.append(12)
+        self.bt.append(11)
+        self.bt.delete(10)
+
+        self.assertRaises(IndexError, lambda: self.bt.find(10))
+
 if __name__ == '__main__':
     unittest.main()
