@@ -45,8 +45,8 @@ def mergesort_array(A, result, start, end):
         return
 
     if end - start == 2:
-        if result[start] > result[start+1]:
-            result[start], result[start+1] = result[start+1], result[start]
+        if result[start] > result[end-1]:
+            result[start], result[end-1] = result[end-1], result[start]
             return
 
     mid = (end + start) / 2
